@@ -20,24 +20,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseClass {
 	static WebDriver driver;
 	public static void browserlaunch(String browser) {
-	if(browser.equals("chrome")) {
+	
 		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver();
-	}
-	else if(browser.equals("firefox"))
-	{
-		WebDriverManager.firefoxdriver().setup();
-		driver=new FirefoxDriver();
-	}
-	else if(browser.equals("edge"))
-	{
-		WebDriverManager.edgedriver().setup();
-		driver=new EdgeDriver();
-	}
-	else
-	{
-		System.out.println("Invalid browser");
-	}
 	}
 
 	public static void urlLaunch(String url)
@@ -51,8 +36,8 @@ public class BaseClass {
 		return text;
 		
 	}
-	public void SendkeysValue(String data, String value) {
-		driver.findElement(By.name(data)).sendKeys(value);
+	public static void SendkeysValue(WebElement data, String value) {
+		data.sendKeys(value);
 	}
 	public static void actionClick(WebElement w)
 	{

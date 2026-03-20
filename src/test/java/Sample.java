@@ -8,21 +8,25 @@ public class Sample extends BaseClass
 	public void test() throws InterruptedException {
 		
 		browserlaunch("chrome");
+		HomePage h = new HomePage();
 		urlLaunch("https://www.magzter.com/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//li[@id='user_icon']")).click();
-		driver.findElement(By.xpath("//input[@id='user-email']")).sendKeys("kiruthikavel98@gmail.com");
+		h.Usericon().click();
+		h.getValue().sendKeys("kiruthikavel98@gmail.com");
 		driver.findElement(By.xpath("//button[@id='continue_btn']")).click();
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//input[@name='pass']")).sendKeys("Kirthi*5");
 		driver.findElement(By.xpath("//button[@id='continue_btn']")).click();
+		h.getSearch().click();
+		driver.findElement(By.xpath("//input[@id='input-field']")).sendKeys("sports");
+		
 		
 		//driver.findElement(By.xpath("(//p[text()='View All '])[3]")).click();
-		HomePage h = new HomePage();
-		h.getSearch().click();
 		
-		//driver.findElement(By.xpath("//input[@id='input-field']")).sendKeys("sports");
+		
+		
+		
 		
 	}
 	
